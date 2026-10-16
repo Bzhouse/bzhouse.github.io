@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Bzhouse 調／代課資料彙整與請領自動化作品案例：使用 Excel VBA 掃描每週代課資料，依授課老師彙整整月紀錄，並帶入原始憑證黏存單。"
+    >
+
+    <title>調／代課資料彙整與請領自動化｜Bzhouse</title>
+
+    <link
+        rel="stylesheet"
+        href="../style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================================
+         Header
+    ========================================= -->
+    <header class="header">
+
+        <a
+            href="../index.html#home"
+            class="logo"
+            aria-label="回到首頁"
+        >
+            Bz
+        </a>
+
+
+        <a
+            href="../index.html#home"
+            class="site-name"
+        >
+            Bzhouse
+        </a>
+
+
+        <button
+            class="menu-button"
+            id="menuButton"
+            aria-label="開啟選單"
+            aria-expanded="false"
+            aria-controls="sideMenu"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </header>
+
+
+
+    <!-- ========================================
+         側邊選單遮罩
+    ========================================= -->
+    <div
+        class="menu-overlay"
+        id="menuOverlay"
+    ></div>
+
+
+
+    <!-- ========================================
+         右側選單
+    ========================================= -->
+    <aside
+        class="side-menu"
+        id="sideMenu"
+    >
+
+        <div class="side-menu-header">
+
+            <span>
+                Bzhouse
+            </span>
+
+            <button
+                class="close-menu-button"
+                id="closeMenuButton"
+                aria-label="關閉選單"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <nav class="side-menu-nav">
+
+            <a href="../index.html#home">
+                首頁
+            </a>
+
+            <a href="../index.html#about">
+                關於我
+            </a>
+
+            <a href="../index.html#projects">
+                作品集
+            </a>
+
+
+            <button
+                class="appearance-button"
+                id="appearanceButton"
+                type="button"
+            >
+                外觀設定
+
+                <span>
+                    ⚙
+                </span>
+            </button>
+
+
+            <div
+                class="appearance-panel"
+                id="appearancePanel"
+            >
+
+                <div class="theme-group">
+
+                    <p>
+                        背景顏色
+                    </p>
+
+                    <div
+                        class="color-options"
+                        id="backgroundOptions"
+                    >
+
+                        <button
+                            class="color-dot background-dot active"
+                            data-background="purple"
+                            title="深紫色"
+                            aria-label="深紫色背景"
+                        ></button>
+
+                        <button
+                            class="color-dot background-dot bg-black"
+                            data-background="black"
+                            title="黑色"
+                            aria-label="黑色背景"
+                        ></button>
+
+                        <button
+                            class="color-dot background-dot bg-blue"
+                            data-background="blue"
+                            title="深藍色"
+                            aria-label="深藍色背景"
+                        ></button>
+
+                        <button
+                            class="color-dot background-dot bg-green"
+                            data-background="green"
+                            title="深綠色"
+                            aria-label="深綠色背景"
+                        ></button>
+
+                        <button
+                            class="color-dot background-dot bg-light"
+                            data-background="light"
+                            title="淺色"
+                            aria-label="淺色背景"
+                        ></button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="theme-group">
+
+                    <p>
+                        文字顏色
+                    </p>
+
+                    <div
+                        class="color-options"
+                        id="textOptions"
+                    >
+
+                        <button
+                            class="color-dot text-dot text-white active"
+                            data-text="white"
+                            title="白色"
+                            aria-label="白色文字"
+                        ></button>
+
+                        <button
+                            class="color-dot text-dot text-purple"
+                            data-text="purple"
+                            title="淡紫色"
+                            aria-label="淡紫色文字"
+                        ></button>
+
+                        <button
+                            class="color-dot text-dot text-yellow"
+                            data-text="yellow"
+                            title="淡黃色"
+                            aria-label="淡黃色文字"
+                        ></button>
+
+                        <button
+                            class="color-dot text-dot text-green"
+                            data-text="green"
+                            title="淡綠色"
+                            aria-label="淡綠色文字"
+                        ></button>
+
+                        <button
+                            class="color-dot text-dot text-black"
+                            data-text="black"
+                            title="黑色"
+                            aria-label="黑色文字"
+                        ></button>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="reset-theme-button"
+                    id="resetThemeButton"
+                    type="button"
+                >
+                    恢復預設
+                </button>
+
+            </div>
+
+        </nav>
+
+    </aside>
+
+
+
+    <!-- ========================================
+         Case Study
+    ========================================= -->
+    <main class="case-study">
+
+
+        <!-- ========================================
+             作品首頁
+        ========================================= -->
+        <section class="case-hero">
+
+            <div class="case-container">
+
+                <a
+                    href="../index.html#projects"
+                    class="back-projects"
+                >
+                    ← 返回作品集
+                </a>
+
+
+                <p class="section-label">
+                    CASE STUDY 03
+                </p>
+
+
+                <h1>
+                    調／代課資料彙整與請領自動化
+                </h1>
+
+
+                <p class="case-lead">
+                    將分散在每週表單中的代課紀錄自動彙整，
+                    依授課老師整理整月代課日期、班級、節次與科目，
+                    再帶入鐘點費請領所需的黏存單格式。
+                </p>
+
+
+                <div class="project-tags">
+
+                    <span>
+                        Excel
+                    </span>
+
+                    <span>
+                        VBA
+                    </span>
+
+                    <span>
+                        資料彙整
+                    </span>
+
+                    <span>
+                        行政自動化
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             01 每週代課資料
+        ========================================= -->
+        <section class="case-section">
+
+            <div class="case-container">
+
+                <div class="case-heading">
+
+                    <p class="case-step">
+                        01
+                    </p>
+
+                    <p class="section-label">
+                        WEEKLY DATA
+                    </p>
+
+                    <h2>
+                        代課資料原本分散在每週表單中
+                    </h2>
+
+                    <p>
+                        每週表單會記錄實際代課狀況，
+                        包含日期、節次、班級、科目，
+                        以及由哪位教師代課。
+                    </p>
+
+                    <p>
+                        若要整理整個月的鐘點費請領資料，
+                        原本需要再從各週內容中逐筆查找與整理，
+                        因此將這些固定格式的資料交由 VBA 統一掃描。
+                    </p>
+
+                </div>
+
+
+                <figure class="case-figure case-figure-large">
+
+                    <img
+                        src="../images/projects/substitute-report/01_weekly_substitute_data.png"
+                        alt="每週代課資料"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        每週代課請示資料｜記錄班級、科目、節次與代課教師
+                    </figcaption>
+
+                </figure>
+
+
+                <p class="figure-note">
+
+                    畫面中的鐘點費以 000 元顯示，
+                    是因為此版本已將實際金額清除作為展示用資料；
+                    實際使用時可依當期鐘點費標準調整，
+                    並已提供對應的修改方式。
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             02 整月教師代課抓取
+        ========================================= -->
+        <section class="case-section case-highlight-section">
+
+            <div class="case-container">
+
+                <div class="case-heading">
+
+                    <p class="case-step">
+                        02
+                    </p>
+
+                    <p class="section-label">
+                        MONTHLY SUMMARY
+                    </p>
+
+                    <h2>
+                        依授課老師名單，自動掃描第一至第五週
+                    </h2>
+
+                    <p>
+                        先將授課老師建立在固定名單中，
+                        程式再依名單逐一掃描第一至第五週，
+                        找出包含該教師的代課紀錄。
+                    </p>
+
+                    <p>
+                        符合條件的資料會自動整理出日期、
+                        代課班級、節次與科目，
+                        再集中成該教師整個月的代課明細；
+                        當月沒有代課紀錄時，
+                        則顯示沒有資料。
+                    </p>
+
+                </div>
+
+
+                <div class="image-pair">
+
+                    <figure class="case-figure">
+
+                        <img
+                            src="../images/projects/substitute-report/02_teacher_lookup_blank.png"
+                            alt="授課老師代課抓取原始狀態"
+                            loading="lazy"
+                        >
+
+                        <figcaption>
+                            教師名單作為每月代課資料的搜尋基準
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure class="case-figure">
+
+                        <img
+                            src="../images/projects/substitute-report/03_teacher_lookup_result.png"
+                            alt="加入教師後的整月代課抓取結果"
+                            loading="lazy"
+                        >
+
+                        <figcaption>
+                            新增教師姓名後，程式自動整理對應的整月代課紀錄
+                        </figcaption>
+
+                    </figure>
+
+                </div>
+
+
+                <div class="design-note">
+
+                    <p class="design-note-label">
+                        DATA HANDLING
+                    </p>
+
+                    <h3>
+                        同名教師重複出現在搜尋名單時
+                    </h3>
+
+                    <p>
+                        授課老師名單會逐列進行查找，
+                        因此同一位教師若重複登錄，
+                        彙整畫面仍可能出現重複結果。
+                    </p>
+
+                    <p>
+                        後續黏存單則依教師姓名取得對應資料，
+                        不會因為搜尋名單中同名教師重複出現，
+                        就將同一筆請領內容重複計算。
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             03 黏存單帶入
+        ========================================= -->
+        <section class="case-section">
+
+            <div class="case-container">
+
+                <div class="case-heading">
+
+                    <p class="case-step">
+                        03
+                    </p>
+
+                    <p class="section-label">
+                        VOUCHER
+                    </p>
+
+                    <h2>
+                        輸入教師姓名，帶入整月代課明細與節數
+                    </h2>
+
+                    <p>
+                        整月代課資料彙整完成後，
+                        在原始憑證黏存單的姓名欄輸入教師姓名，
+                        表格即可取得該教師的整月代課紀錄。
+                    </p>
+
+                    <p>
+                        右側會帶入代課教師、日期、班級、
+                        節次與科目等內容，
+                        左側則依代課資料計算請領節數，
+                        再配合鐘點費標準計算後續金額。
+                    </p>
+
+                </div>
+
+
+                <div class="image-pair">
+
+                    <figure class="case-figure">
+
+                        <img
+                            src="../images/projects/substitute-report/06_voucher_blank.png"
+                            alt="尚未輸入教師姓名的原始憑證黏存單"
+                            loading="lazy"
+                        >
+
+                        <figcaption>
+                            尚未輸入教師姓名時，請領資料維持空白
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure class="case-figure">
+
+                        <img
+                            src="../images/projects/substitute-report/05_voucher_result.png"
+                            alt="輸入教師姓名後的原始憑證黏存單"
+                            loading="lazy"
+                        >
+
+                        <figcaption>
+                            輸入教師姓名後，自動帶入代課明細並計算節數
+                        </figcaption>
+
+                    </figure>
+
+                </div>
+
+
+                <p class="figure-note">
+
+                    <strong>
+                        展示資料說明：
+                    </strong>
+
+                    此版本已將實際鐘點費金額清除，
+                    因此畫面以 000 元與 0 元顯示；
+                    實際使用時可依當期鐘點費標準調整。
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             04 操作流程
+        ========================================= -->
+        <section class="case-section case-highlight-section">
+
+            <div class="case-container">
+
+                <div class="case-heading">
+
+                    <p class="case-step">
+                        04
+                    </p>
+
+                    <p class="section-label">
+                        WORKFLOW
+                    </p>
+
+                    <h2>
+                        從每週紀錄到整月請領資料
+                    </h2>
+
+                </div>
+
+
+                <div class="evolution-flow">
+
+                    <div class="evolution-item">
+
+                        <span>
+                            01
+                        </span>
+
+                        <strong>
+                            每週登錄
+                        </strong>
+
+                        <p>
+                            記錄班級、科目
+                            <br>
+                            與代課教師
+                        </p>
+
+                    </div>
+
+
+                    <div class="evolution-arrow">
+                        →
+                    </div>
+
+
+                    <div class="evolution-item">
+
+                        <span>
+                            02
+                        </span>
+
+                        <strong>
+                            整月彙整
+                        </strong>
+
+                        <p>
+                            掃描第一至第五週
+                            <br>
+                            整理教師代課紀錄
+                        </p>
+
+                    </div>
+
+
+                    <div class="evolution-arrow">
+                        →
+                    </div>
+
+
+                    <div class="evolution-item">
+
+                        <span>
+                            03
+                        </span>
+
+                        <strong>
+                            請領資料
+                        </strong>
+
+                        <p>
+                            依教師姓名帶入
+                            <br>
+                            黏存單與節數
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+                <!-- ========================================
+             05 成果
+        ========================================= -->
+        <section class="case-section case-results">
+
+            <div class="case-container">
+
+                <div class="case-heading">
+
+                    <p class="case-step">
+                        05
+                    </p>
+
+                    <p class="section-label">
+                        RESULT
+                    </p>
+
+                    <h2>
+                        保留原本熟悉的表格，減少後續人工整理
+                    </h2>
+
+                    <p>
+                        原本每週代課資料以 Word 表格逐份填寫，
+                        月底再由承辦人員逐筆整理整月代課內容，
+                        填入請領所需的表格後列印送簽。
+                    </p>
+
+                    <p>
+                        調整後將原有表格格式轉為 Excel，
+                        盡量保留使用者原本熟悉的版面與作業方式，
+                        再利用 VBA 自動處理整月資料查找與彙整，
+                        減少重複輸入與人工整理。
+                    </p>
+
+                </div>
+
+
+                <div class="result-grid">
+
+                    <div class="result-card">
+
+                        <span>
+                            原有格式
+                        </span>
+
+                        <h3>
+                            保留熟悉版面
+                        </h3>
+
+                        <p>
+                            將原本使用的代課請示表格式轉為 Excel，
+                            不需要使用者重新適應完全不同的表單。
+                        </p>
+
+                    </div>
+
+
+                    <div class="result-card">
+
+                        <span>
+                            整月整理
+                        </span>
+
+                        <h3>
+                            自動彙整代課紀錄
+                        </h3>
+
+                        <p>
+                            程式掃描第一至第五週，
+                            依教師整理日期、班級、節次與科目，
+                            不必再逐份表格人工查找。
+                        </p>
+
+                    </div>
+
+
+                    <div class="result-card">
+
+                        <span>
+                            請領作業
+                        </span>
+
+                        <h3>
+                            明細直接帶入
+                        </h3>
+
+                        <p>
+                            在黏存單輸入教師姓名後，
+                            即可帶入對應的整月代課明細與節數，
+                            再依鐘點費標準完成後續請領與列印送簽。
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="development-note">
+
+                    <p class="section-label">
+                        DEVELOPMENT
+                    </p>
+
+                    <h3>
+                        開發方式
+                    </h3>
+
+                    <p>
+                        依原有的每週代課表與請領流程整理資料關係、
+                        搜尋規則與輸出方式，
+                        建立授課老師名單作為搜尋基準，
+                        並透過 VBA 掃描各週代課紀錄、
+                        彙整整月資料，再帶入後續請領表格。
+                    </p>
+
+                    <p>
+                        專案中的需求理解、資料整理、流程設計、
+                        功能測試與實際使用調整由我負責；
+                        VBA 程式撰寫、技術查詢與除錯過程會搭配 AI 協助。
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             作品導覽
+        ========================================= -->
+        <section class="case-next">
+
+            <div class="case-container case-navigation">
+
+                <a
+                    href="../index.html#projects"
+                    class="case-navigation-item case-navigation-back"
+                >
+
+                    <p>
+                        MORE PROJECTS
+                    </p>
+
+                    <strong>
+                        ← 返回作品集
+                    </strong>
+
+                </a>
+
+
+                <div
+                    class="case-navigation-item case-navigation-next"
+                >
+
+                    <p>
+                        END OF PROJECTS
+                    </p>
+
+                    <strong>
+                        已到作品集結尾
+                    </strong>
+
+                    <strong>
+                        暫無後續作品
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <script src="../main.js"></script>
+
+</body>
+
+</html>

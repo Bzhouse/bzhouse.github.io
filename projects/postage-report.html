@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Bzhouse 郵票收發統計自動化作品案例：將郵寄資料集中於單一來源表，並以 Excel VBA 自動產生郵票收支明細、掛號二聯單及郵票盤存資料。"
+    >
+
+    <title>郵票收發統計自動化｜Bzhouse</title>
+
+    <link
+        rel="stylesheet"
+        href="../style.css"
+    >
+</head>
+
+
+<body>
+
+
+    <!-- ========================================
+         Header
+    ========================================= -->
+    <header class="header">
+
+        <a
+            href="../index.html#home"
+            class="logo"
+            aria-label="回到首頁"
+        >
+            Bz
+        </a>
+
+
+        <a
+            href="../index.html#home"
+            class="site-name"
+        >
+            Bzhouse
+        </a>
+
+
+        <button
+            class="menu-button"
+            id="menuButton"
+            aria-label="開啟選單"
+            aria-expanded="false"
+            aria-controls="sideMenu"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </header>
+
+
+
+    <!-- ========================================
+         側邊選單遮罩
+    ========================================= -->
+    <div
+        class="menu-overlay"
+        id="menuOverlay"
+    ></div>
+
+
+
+    <!-- ========================================
+         右側選單
+    ========================================= -->
+    <aside
+        class="side-menu"
+        id="sideMenu"
+    >
+
+        <div class="side-menu-header">
+
+            <span>
+                Bzhouse
+            </span>
+
+            <button
+                class="close-menu-button"
+                id="closeMenuButton"
+                aria-label="關閉選單"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <nav class="side-menu-nav">
+
+            <a href="../index.html#home">
+                首頁
+            </a>
+
+            <a href="../index.html#about">
+                關於我
+            </a>
+
+            <a href="../index.html#projects">
+                作品集
+            </a>
+
+
+            <button
+                class="appearance-button"
+                id="appearanceButton"
+                type="button"
+            >
+                外觀設定
+
+                <span>
+                    ⚙
+                </span>
+            </button>
+
+
+            <div
+                class="appearance-panel"
+                id="appearancePanel"
+            >
+
+                <!-- 背景顏色 -->
+                <div class="theme-group">
+
+                    <p>
+                        背景顏色
+                    </p>
+
+                    <div
+                        class="color-options"
+                        id="backgroundOptions"
+                    >
+
+                        <button
+                            class="color-dot background-dot active"
+                            data-background="purple"
+                            title="深紫色"
+                            aria-label="深紫色背景"
+                        ></button>
+
+                        <button
+                            class="color-dot background-dot bg-black"
+                            data-background="black"
+                            title="黑色"
+                            aria-label="黑色背景"
+                        ></button>
+
+                        <button
+                            class="color-dot background-dot bg-blue"
+                            data-background="blue"
+                            title="深藍色"
+                            aria-label="深藍色背景"
+                        ></button>
+
+                        <button
+                            class="color-dot background-dot bg-green"
+                            data-background="green"
+                            title="深綠色"
+                            aria-label="深綠色背景"
+                        ></button>
+
+                        <button
+                            class="color-dot background-dot bg-light"
+                            data-background="light"
+                            title="淺色"
+                            aria-label="淺色背景"
+                        ></button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 文字顏色 -->
+                <div class="theme-group">
+
+                    <p>
+                        文字顏色
+                    </p>
+
+                    <div
+                        class="color-options"
+                        id="textOptions"
+                    >
+
+                        <button
+                            class="color-dot text-dot text-white active"
+                            data-text="white"
+                            title="白色"
+                            aria-label="白色文字"
+                        ></button>
+
+                        <button
+                            class="color-dot text-dot text-purple"
+                            data-text="purple"
+                            title="淡紫色"
+                            aria-label="淡紫色文字"
+                        ></button>
+
+                        <button
+                            class="color-dot text-dot text-yellow"
+                            data-text="yellow"
+                            title="淡黃色"
+                            aria-label="淡黃色文字"
+                        ></button>
+
+                        <button
+                            class="color-dot text-dot text-green"
+                            data-text="green"
+                            title="淡綠色"
+                            aria-label="淡綠色文字"
+                        ></button>
+
+                        <button
+                            class="color-dot text-dot text-black"
+                            data-text="black"
+                            title="黑色"
+                            aria-label="黑色文字"
+                        ></button>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="reset-theme-button"
+                    id="resetThemeButton"
+                    type="button"
+                >
+                    恢復預設
+                </button>
+
+            </div>
+
+        </nav>
+
+    </aside>
+
+
+
+    <!-- ========================================
+         Case Study
+    ========================================= -->
+    <main class="case-study">
+
+
+        <!-- ========================================
+             作品首頁
+        ========================================= -->
+        <section class="case-hero">
+
+            <div class="case-container">
+
+                <a
+                    href="../index.html#projects"
+                    class="back-projects"
+                >
+                    ← 返回作品集
+                </a>
+
+
+                <p class="section-label">
+                    CASE STUDY 02
+                </p>
+
+
+                <h1>
+                    郵票收發統計自動化
+                </h1>
+
+
+                <p class="case-lead">
+                    將原本分散於不同 Excel 表格與 Word 文件中的郵寄資料，
+                    重新集中為單一資料來源，
+                    再依用途自動產生整月郵票收支、掛號二聯單與郵票盤存資料。
+                </p>
+
+
+                <div class="project-tags">
+
+                    <span>
+                        Excel
+                    </span>
+
+                    <span>
+                        VBA
+                    </span>
+
+                    <span>
+                        資料整合
+                    </span>
+
+                    <span>
+                        報表自動化
+                    </span>
+
+                    <span>
+                        操作流程簡化
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             01 所有郵票明細
+        ========================================= -->
+        <section class="case-section">
+
+            <div class="case-container">
+
+                <div class="case-heading">
+
+                    <p class="case-step">
+                        01
+                    </p>
+
+                    <p class="section-label">
+                        SINGLE DATA SOURCE
+                    </p>
+
+                    <h2>
+                        先把重複輸入，集中成一份資料
+                    </h2>
+
+                    <p>
+                        原有作業中的郵票收支明細、
+                        掛號二聯單與郵票盤存，
+                        分散在不同的 Excel 表格與 Word 文件中。
+                        同一筆郵寄資料往往需要依不同用途再次輸入或整理，
+                        帳面金額與實際郵票數量也需要人工計算。
+                    </p>
+
+                    <p>
+                        因此我先建立「所有郵票明細」，
+                        將日常郵寄資料集中成單一來源。
+                        使用者平常主要維護這一張表，
+                        後續需要的正式資料再由程式依這份資料產生。
+                    </p>
+
+                </div>
+
+
+                <figure class="case-figure case-figure-large">
+
+                    <img
+                        src="../images/projects/postage-report/05_source_data.png"
+                        alt="所有郵票明細資料來源表"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        所有郵票明細｜日常郵寄資料集中在同一張來源表維護
+                    </figcaption>
+
+                </figure>
+
+
+                <p class="figure-note">
+
+                    每筆資料除了日期、掛號號碼、收件資料、
+                    寄件單位、金額與傳送方式之外，
+                    也會記錄這次寄件實際使用的各面額郵票張數，
+                    讓後續正式文件與郵票盤存都能從同一份資料取得。
+
+                </p>
+
+
+                <div class="simple-data-flow">
+
+                    <span>
+                        所有郵票明細
+                    </span>
+
+                    <b>
+                        →
+                    </b>
+
+                    <span>
+                        郵票收支明細
+                    </span>
+
+                    <b>
+                        ＋
+                    </b>
+
+                    <span>
+                        掛號二聯單
+                    </span>
+
+                    <b>
+                        ＋
+                    </b>
+
+                    <span>
+                        郵票盤存
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             02 郵票收支明細
+        ========================================= -->
+        <section class="case-section case-highlight-section">
+
+            <div class="case-container">
+
+                <div class="case-heading">
+
+                    <p class="case-step">
+                        02
+                    </p>
+
+                    <p class="section-label">
+                        POSTAGE RECORD
+                    </p>
+
+                    <h2>
+                        原本人工維護的整月明細，改由來源資料產生
+                    </h2>
+
+                    <p>
+                        郵票收支明細原本需要人工逐筆輸入，
+                        整月資料持續往下累積，
+                        並另外整理小計、上月結存、本月新增、
+                        本月支出與月底結存。
+                    </p>
+
+                    <p>
+                        調整後仍保留原本需要使用的正式表格格式，
+                        但不需要再重新輸入相同的郵寄資料。
+                        按下更新按鈕後，
+                        程式會掃描整個月的「所有郵票明細」，
+                        再產生對應的整月郵票收支資料。
+                    </p>
+
+                </div>
+
+
+                <div class="case-figure-section">
+
+                    <h3 class="case-figure-heading">
+                        郵票收支明細
+                    </h3>
+
+
+                    <figure class="case-figure case-figure-large">
+
+                        <img
+                            src="../images/projects/postage-report/01_postage_record_top.png"
+                            alt="郵票收支明細前段"
+                            loading="lazy"
+                        >
+
+                        <figcaption>
+                            前段｜依日期整理收件資料、寄件單位、金額與傳送方式
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure class="case-figure case-figure-large">
+
+                        <img
+                            src="../images/projects/postage-report/02_old_postage_record_middle.png"
+                            alt="郵票收支明細中段"
+                            loading="lazy"
+                        >
+
+                        <figcaption>
+                            中段｜整月郵寄紀錄持續往下排列，並整理各段小計
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure class="case-figure case-figure-large">
+
+                        <img
+                            src="../images/projects/postage-report/03_old_postage_record_summary.png"
+                            alt="郵票收支明細月底統計"
+                            loading="lazy"
+                        >
+
+                        <figcaption>
+                            後段｜統整上月結存、本月新增、本月支出與本月結存；
+                            上月結存與本月新增金額由使用者依實際資料輸入
+                        </figcaption>
+
+                    </figure>
+
+                </div>
+
+                                <div class="case-figure-section">
+
+                    <h3 class="case-figure-heading">
+                        匯出時同步檢查資料
+                    </h3>
+
+
+                    <figure class="case-figure case-figure-large">
+
+                        <img
+                            src="../images/projects/postage-report/11_postage_amount_mismatch_warning.png"
+                            alt="郵票收支明細匯出時的金額異常提示"
+                            loading="lazy"
+                        >
+
+                        <figcaption>
+                            金額與實際使用郵票總額不一致時，列出異常資料供使用者確認
+                        </figcaption>
+
+                    </figure>
+
+
+                    <p class="figure-note">
+
+                        匯出郵票收支明細時，系統不會單純把所有列直接帶出。
+                        只有同時具備日期、地址或收件人（機關），以及金額的資料，
+                        才會列入匯出。
+                        如果金額與郵票總額不一致，
+                        系統也會在匯出完成時列出異常資料，
+                        提醒使用者回到來源表修正。
+
+                    </p>
+
+                </div>
+
+
+                <div class="design-note">
+
+                    <p class="design-note-label">
+                        BEFORE → AFTER
+                    </p>
+
+                    <h3>
+                        表格沒有消失，改變的是資料怎麼進去
+                    </h3>
+
+                    <p>
+                        正式作業仍需要這份郵票收支明細，
+                        因此並不是另外做一張完全不同的報表。
+                        真正改變的是資料來源：
+                        從原本人工逐筆維護，
+                        改成由「所有郵票明細」統一提供資料，
+                        再一次產生整月內容。
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             03 掛號二聯單
+        ========================================= -->
+        <section class="case-section">
+
+            <div class="case-container">
+
+                <div class="case-heading">
+
+                    <p class="case-step">
+                        03
+                    </p>
+
+                    <p class="section-label">
+                        REGISTERED MAIL FORM
+                    </p>
+
+                    <h2>
+                        同一份來源資料，再產生掛號二聯單
+                    </h2>
+
+                    <p>
+                        掛號二聯單原本使用 Word 維護。
+                        掛號號碼通常是連續編號，
+                        但在 Word 表格中連續輸入與換格較不方便；
+                        而同一筆寄件資料之後還需要再輸入到郵票收支明細，
+                        因此會產生重複輸入。
+                    </p>
+
+                    <p>
+                        因此將二聯單一起整合到 Excel 流程中。
+                        使用者只需維護「所有郵票明細」，
+                        按下按鈕後，程式會掃描整個月的資料，
+                        篩選掛號類型的紀錄，
+                        並依日期自動分成不同的二聯單區塊；
+                        同一天資料較多時也會自動續頁，
+                        再依原本使用的格式產生整月內容。
+                    </p>
+
+                </div>
+
+
+                <figure class="case-figure case-figure-large">
+
+                    <img
+                        src="../images/projects/postage-report/04_registered_form.png"
+                        alt="自動產生的掛號二聯單"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        掛號二聯單｜從同一份來源資料篩選掛號紀錄後產生
+                    </figcaption>
+
+                </figure>
+
+
+                <p class="figure-note">
+
+                    平信等不需要掛號執據的寄件資料不會進入二聯單；
+                    系統只取符合掛號類型的紀錄，
+                    因此不需要使用者另外挑選或重新輸入。
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             04 郵票盤存
+        ========================================= -->
+        <section class="case-section case-highlight-section">
+
+            <div class="case-container">
+
+                <div class="case-heading">
+
+                    <p class="case-step">
+                        04
+                    </p>
+
+                    <p class="section-label">
+                        POSTAGE INVENTORY
+                    </p>
+
+                    <h2>
+                        每一筆使用量，最後都會回到郵票庫存
+                    </h2>
+
+                    <p>
+                        「所有郵票明細」後方會記錄每筆寄件實際使用的
+                        各面額郵票張數。
+                        系統依上期剩餘數量、本月新購郵票與實際使用紀錄，
+                        計算各面額目前剩餘的張數與金額。
+                    </p>
+
+                    <p>
+                        若當月另外購買新郵票，
+                        新增數量仍由使用者依實際狀況輸入，
+                        再由系統納入後續盤存計算。
+                    </p>
+
+                </div>
+
+
+                <!-- 盤存計算流程 -->
+                <div class="inventory-flow">
+
+                    <span>
+                        上期郵票
+                    </span>
+
+                    <b>
+                        ＋
+                    </b>
+
+                    <span>
+                        本月新增
+                    </span>
+
+                    <b>
+                        －
+                    </b>
+
+                    <span>
+                        寄件使用量
+                    </span>
+
+                    <b>
+                        →
+                    </b>
+
+                    <span>
+                        郵票餘數
+                    </span>
+
+                </div>
+
+
+                <!-- 郵票餘數結果 -->
+                <figure class="case-figure case-figure-large">
+
+                    <img
+                        src="../images/projects/postage-report/06_postage_inventory.png"
+                        alt="郵票各面額餘數統計"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        依面額統計剩餘張數、金額與整體郵票餘額
+                    </figcaption>
+
+                </figure>
+
+
+                <!-- ========================================
+                     郵票餘額檢查
+                ========================================= -->
+                <div class="validation-grid">
+
+                    <div class="validation-copy">
+
+                        <p class="section-label">
+                            INVENTORY CHECK
+                        </p>
+
+                        <h3>
+                            盤存時，同步檢查郵票是否足夠
+                        </h3>
+
+                        <p>
+                            產生郵票餘數時，
+                            系統會同步檢查每筆寄件使用的郵票數量。
+                            若所有資料都能正常扣除，
+                            會顯示結算成功。
+                        </p>
+
+                        <p>
+                            若某個面額的郵票不足，
+                            則會直接指出異常資料所在列、
+                            郵票面額、扣除前剩餘數量，
+                            以及該筆資料預計扣除的張數，
+                            方便使用者回到來源資料確認。
+                        </p>
+
+                    </div>
+
+
+                    <div class="validation-images">
+
+                        <figure class="mini-screen">
+
+                            <img
+                                src="../images/projects/postage-report/09_postage_inventory_check_pass.png"
+                                alt="郵票餘數檢查正常"
+                                loading="lazy"
+                            >
+
+                            <figcaption>
+                                所有郵票資料正常時，完成結算
+                            </figcaption>
+
+                        </figure>
+
+
+                        <figure class="mini-screen">
+
+                            <img
+                                src="../images/projects/postage-report/10_postage_inventory_insufficient_warning.png"
+                                alt="郵票餘額不足異常提示"
+                                loading="lazy"
+                            >
+
+                            <figcaption>
+                                測試時刻意將 15 元郵票使用量提高至 150 張，
+                                系統會指出不足的面額與資料列
+                            </figcaption>
+
+                        </figure>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ========================================
+                     設計決策：單天盤存
+                ========================================= -->
+                <div class="design-note">
+
+                    <p class="design-note-label">
+                        DESIGN DECISION
+                    </p>
+
+                    <h3>
+                        為什麼建議每天更新一次郵票餘數？
+                    </h3>
+
+                    <p>
+                        每次更新郵票餘數時，
+                        系統都會依目前已登錄的整月資料，
+                        重新計算各面額截至當下的剩餘數量。
+                    </p>
+
+                    <p>
+                        因此建議每天新增完郵寄資料後更新一次，
+                        再將系統計算出的帳面餘數與實際持有的郵票進行核對。
+                        若當天有新購郵票，也可以在當天盤點時一併更新新增的面額與張數，
+                        讓帳面資料與實際持有數量保持一致。
+                        如果當天就發現數量不一致，
+                        也能較快回頭確認近期輸入的資料，
+                        避免累積多天後才發現問題。
+                    </p>
+
+                </div>
+
+
+                <p class="figure-note">
+
+                    <strong>
+                        同一套餘數統計，同時支援日常核對與月底盤存：
+                    </strong>
+
+                    平時更新時，可作為截至當天的郵票帳面餘數；
+                    到月底完成最後一次更新後，
+                    同一份結果即可作為當月月底盤存資料。
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             05 操作防呆
+        ========================================= -->
+        <section class="case-section">
+
+            <div class="case-container">
+
+                <div class="case-heading">
+
+                    <p class="case-step">
+                        05
+                    </p>
+
+                    <p class="section-label">
+                        SAFETY CHECK
+                    </p>
+
+                    <h2>
+                        清除資料前，先確認真的要刪
+                    </h2>
+
+                    <p>
+                        每個新月份可以複製新檔案繼續使用。
+                        為了方便清除歷史明細，
+                        來源表提供「清除所有資料」功能，
+                        但不會在按下按鈕後直接刪除。
+                    </p>
+
+                    <p>
+                        雖然建議以空白檔案作為新月份的基準，
+                        實際使用時仍可能直接複製上個月的檔案。
+                        若只靠人工刪除，較下方的舊資料可能因未被注意而殘留，
+                        後續更新時就可能被誤認為本月資料。
+                        因此清除功能會一次移除來源表中的既有明細，
+                        降低跨月資料殘留的風險。
+                    </p>
+
+                </div>
+
+
+                <div class="image-pair">
+
+                    <figure class="case-figure">
+
+                        <img
+                            src="../images/projects/postage-report/07_clear_data_warning.png"
+                            alt="清除所有郵票資料前的警告"
+                            loading="lazy"
+                        >
+
+                        <figcaption>
+                            有資料時，會再次確認並提醒清除後無法復原
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure class="case-figure">
+
+                        <img
+                            src="../images/projects/postage-report/08_clear_data_empty_notice.png"
+                            alt="郵票明細沒有資料時的提示"
+                            loading="lazy"
+                        >
+
+                        <figcaption>
+                            若來源表本來就是空的，則提示無需清除
+                        </figcaption>
+
+                    </figure>
+
+                </div>
+
+
+                <p class="figure-note">
+
+                    <strong>
+                        依目前狀態執行：
+                    </strong>
+
+                    有資料時先要求使用者再次確認；
+                    沒有資料時則直接提示無需執行，
+                    避免不必要的刪除操作。
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             06 操作流程
+        ========================================= -->
+        <section class="case-section case-highlight-section">
+
+            <div class="case-container">
+
+                <div class="case-heading">
+
+                    <p class="case-step">
+                        06
+                    </p>
+
+                    <p class="section-label">
+                        WORKFLOW
+                    </p>
+
+                    <h2>
+                        日常只維護一份明細，再用按鈕完成後續工作
+                    </h2>
+
+                    <p>
+                        這次調整的重點不是重新設計所有正式表格，
+                        而是保留原本需要的輸出格式，
+                        把重複輸入與人工統整移到程式處理。
+                    </p>
+
+                </div>
+
+
+                <div class="evolution-flow">
+
+                    <div class="evolution-item">
+
+                        <span>
+                            01
+                        </span>
+
+                        <strong>
+                            新增郵寄資料
+                        </strong>
+
+                        <p>
+                            集中輸入至
+                            <br>
+                            所有郵票明細
+                        </p>
+
+                    </div>
+
+
+                    <div class="evolution-arrow">
+                        →
+                    </div>
+
+
+                    <div class="evolution-item">
+
+                        <span>
+                            02
+                        </span>
+
+                        <strong>
+                            按鈕更新
+                        </strong>
+
+                        <p>
+                            程式掃描
+                            <br>
+                            整月來源資料
+                        </p>
+
+                    </div>
+
+
+                    <div class="evolution-arrow">
+                        →
+                    </div>
+
+
+                    <div class="evolution-item">
+
+                        <span>
+                            03
+                        </span>
+
+                        <strong>
+                            自動輸出
+                        </strong>
+
+                        <p>
+                            收支、二聯單
+                            <br>
+                            與郵票盤存
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             07 成果
+        ========================================= -->
+        <section class="case-section case-results">
+
+            <div class="case-container">
+
+                <div class="case-heading">
+
+                    <p class="case-step">
+                        07
+                    </p>
+
+                    <p class="section-label">
+                        RESULT
+                    </p>
+
+                    <h2>
+                        從多處人工維護，改成集中輸入與整月輸出
+                    </h2>
+
+                </div>
+
+
+                <div class="result-grid">
+
+                    <div class="result-card">
+
+                        <span>
+                            資料輸入
+                        </span>
+
+                        <h3>
+                            單一來源
+                        </h3>
+
+                        <p>
+                            日常郵寄資料集中維護在
+                            「所有郵票明細」，
+                            不需同步輸入多張正式表格。
+                        </p>
+
+                    </div>
+
+
+                    <div class="result-card">
+
+                        <span>
+                            正式資料
+                        </span>
+
+                        <h3>
+                            整月一次產生
+                        </h3>
+
+                        <p>
+                            郵票收支明細與掛號二聯單
+                            都能一次掃描整月資料，
+                            不需要逐日建立。
+                        </p>
+
+                    </div>
+
+
+                    <div class="result-card">
+
+                        <span>
+                            郵票管理
+                        </span>
+
+                        <h3>
+                            面額與餘數連動
+                        </h3>
+
+                        <p>
+                            各筆實際使用的郵票面額
+                            直接納入盤存，
+                            讓剩餘張數與金額可以持續更新。
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="development-note">
+
+                    <p class="section-label">
+                        DEVELOPMENT
+                    </p>
+
+                    <h3>
+                        開發方式
+                    </h3>
+
+                    <p>
+                        依實際作業方式整理資料欄位、
+                        輸出規則與操作流程，
+                        並針對使用者較不熟悉 Excel 的情況，
+                        將主要操作改為按鈕執行。
+                    </p>
+
+                    <p>
+                        專案中的需求理解、流程設計、
+                        功能測試與實際使用調整由我負責；
+                        VBA 程式撰寫、技術查詢與除錯過程會搭配 AI 協助。
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             作品導覽
+        ========================================= -->
+        <section class="case-next">
+
+            <div class="case-container case-navigation">
+
+                <a
+                    href="../index.html#projects"
+                    class="case-navigation-item case-navigation-back"
+                >
+
+                    <p>
+                        MORE PROJECTS
+                    </p>
+
+                    <strong>
+                        ← 返回作品集
+                    </strong>
+
+                </a>
+
+
+                <a
+                    href="substitute-report.html"
+                    class="case-navigation-item case-navigation-next"
+                >
+
+                    <p>
+                        NEXT PROJECT
+                    </p>
+
+                    <strong>
+                        調／代課資料彙整與請領自動化 →
+                    </strong>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- JavaScript -->
+    <script src="../main.js"></script>
+
+</body>
+
+</html>

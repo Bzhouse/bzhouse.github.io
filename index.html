@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Bzhouse</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+
+<body>
+
+    <!-- ========================================
+         Header
+    ========================================= -->
+    <header class="header">
+
+        <!-- 左上 Logo -->
+        <a
+            href="#home"
+            class="logo"
+            aria-label="回到首頁"
+        >
+            Bz
+        </a>
+
+
+        <!-- 中間網站名稱 -->
+        <a
+            href="#home"
+            class="site-name"
+        >
+            Bzhouse
+        </a>
+
+
+        <!-- 右上選單 -->
+        <button
+            class="menu-button"
+            id="menuButton"
+            aria-label="開啟選單"
+            aria-expanded="false"
+            aria-controls="sideMenu"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </header>
+
+
+
+    <!-- ========================================
+         側邊選單遮罩
+    ========================================= -->
+    <div
+        class="menu-overlay"
+        id="menuOverlay"
+    ></div>
+
+
+
+    <!-- ========================================
+         右側選單
+    ========================================= -->
+    <aside
+        class="side-menu"
+        id="sideMenu"
+    >
+
+        <div class="side-menu-header">
+
+            <span>Bzhouse</span>
+
+            <button
+                class="close-menu-button"
+                id="closeMenuButton"
+                aria-label="關閉選單"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <nav class="side-menu-nav">
+
+            <a href="#home">
+                首頁
+            </a>
+
+            <a href="#about">
+                關於我
+            </a>
+
+            <a href="#projects">
+                作品集
+            </a>
+
+
+            <!-- 外觀設定 -->
+            <button
+                class="appearance-button"
+                id="appearanceButton"
+                type="button"
+            >
+                外觀設定
+
+                <span>⚙</span>
+            </button>
+
+
+            <div
+                class="appearance-panel"
+                id="appearancePanel"
+            >
+
+                <!-- 背景顏色 -->
+                <div class="theme-group">
+
+                    <p>背景顏色</p>
+
+                    <div
+                        class="color-options"
+                        id="backgroundOptions"
+                    >
+
+                        <button
+                            class="color-dot background-dot active"
+                            data-background="purple"
+                            aria-label="深紫色背景"
+                            title="深紫色"
+                        ></button>
+
+                        <button
+                            class="color-dot background-dot bg-black"
+                            data-background="black"
+                            aria-label="黑色背景"
+                            title="黑色"
+                        ></button>
+
+                        <button
+                            class="color-dot background-dot bg-blue"
+                            data-background="blue"
+                            aria-label="深藍色背景"
+                            title="深藍色"
+                        ></button>
+
+                        <button
+                            class="color-dot background-dot bg-green"
+                            data-background="green"
+                            aria-label="深綠色背景"
+                            title="深綠色"
+                        ></button>
+
+                        <button
+                            class="color-dot background-dot bg-light"
+                            data-background="light"
+                            aria-label="淺色背景"
+                            title="淺色"
+                        ></button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 文字顏色 -->
+                <div class="theme-group">
+
+                    <p>文字顏色</p>
+
+                    <div
+                        class="color-options"
+                        id="textOptions"
+                    >
+
+                        <button
+                            class="color-dot text-dot text-white active"
+                            data-text="white"
+                            aria-label="白色文字"
+                            title="白色"
+                        ></button>
+
+                        <button
+                            class="color-dot text-dot text-purple"
+                            data-text="purple"
+                            aria-label="淡紫色文字"
+                            title="淡紫色"
+                        ></button>
+
+                        <button
+                            class="color-dot text-dot text-yellow"
+                            data-text="yellow"
+                            aria-label="淡黃色文字"
+                            title="淡黃色"
+                        ></button>
+
+                        <button
+                            class="color-dot text-dot text-green"
+                            data-text="green"
+                            aria-label="淡綠色文字"
+                            title="淡綠色"
+                        ></button>
+
+                        <button
+                            class="color-dot text-dot text-black"
+                            data-text="black"
+                            aria-label="黑色文字"
+                            title="黑色"
+                        ></button>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="reset-theme-button"
+                    id="resetThemeButton"
+                    type="button"
+                >
+                    恢復預設
+                </button>
+
+            </div>
+
+        </nav>
+
+    </aside>
+
+
+
+    <!-- ========================================
+         網站主要內容
+    ========================================= -->
+    <main>
+
+
+        <!-- ========================================
+             Hero
+        ========================================= -->
+        <section
+            class="hero"
+            id="home"
+        >
+
+            <div class="hero-content">
+
+                <p class="hello">
+                    嗨，我是 Bz
+                </p>
+
+                <h1>
+                    雖然我喜歡重複做一件事
+                    <br>
+
+                    <span>
+                        但我更喜歡把重複的事變簡單
+                    </span>
+                </h1>
+
+
+                <a
+                    href="#projects"
+                    class="hero-button"
+                >
+                    查看作品
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             關於我
+        ========================================= -->
+        <section
+            class="about-section"
+            id="about"
+        >
+
+            <div class="about-container">
+
+
+                <!-- ========================================
+                     左側：關於我
+                ========================================= -->
+                <div class="about-profile">
+
+
+                    <!-- 之後換成照片 / Logo -->
+                    <div class="about-photo">
+                        <span>Bz</span>
+                    </div>
+
+
+                    <div class="about-intro">
+
+                        <p class="section-label">
+                            ABOUT ME
+                        </p>
+
+                        <h2>
+                            關於我
+                        </h2>
+
+
+                        <p>
+                            嗨，我是 Bz。
+                        </p>
+
+
+                        <p>
+                            我喜歡研究如何把繁瑣、重複的工作整理得更簡單，
+                            目前主要以 Excel 報表自動化與流程整理為作品方向。
+                        </p>
+
+
+                        <p>
+                            這裡會放我的作品，以及一些正在嘗試與學習的東西。
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ========================================
+                     右側：工具與技能
+                ========================================= -->
+                <div class="skills-card">
+
+                    <p class="section-label">
+                        TOOLS & SKILLS
+                    </p>
+
+                    <h2>
+                        工具與技能
+                    </h2>
+
+
+                    <!-- Excel -->
+                    <div class="skill-detail">
+
+                        <div class="skill-heading">
+
+                            <h3>
+                                Excel
+                            </h3>
+
+                            <span class="skill-badge">
+                                主要使用
+                            </span>
+
+                        </div>
+
+
+                        <p>
+                            報表設計、公式應用、資料整理，
+                            以及依實際工作流程設計自動化報表。
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- Excel VBA -->
+                    <div class="skill-detail">
+
+                        <div class="skill-heading">
+
+                            <h3>
+                                Excel VBA
+                            </h3>
+
+                            <span class="skill-badge">
+                                自動化開發
+                            </span>
+
+                        </div>
+
+
+                        <p>
+                            應用於 Excel 報表產生、資料處理與重複工作自動化。
+                            開發時會搭配 AI 協助程式撰寫與除錯。
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- AI -->
+                    <div class="ai-note">
+
+                        <div class="ai-note-title">
+                            AI 輔助開發
+                        </div>
+
+                        <p>
+                            我會使用 AI 協助程式撰寫、技術查詢與除錯；
+                            需求理解、流程設計、功能測試與實際使用調整則由我負責。
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ========================================
+                     下方：找到我
+                ========================================= -->
+                <div class="contact-card">
+
+                    <p class="section-label">
+                        LINKS
+                    </p>
+
+                    <h2>
+                        找到我
+                    </h2>
+
+
+                    <div class="contact-links">
+
+                        <a href="mailto:你的Email">
+                            Email
+                        </a>
+
+                        <a
+                            href="#"
+                            target="_blank"
+                        >
+                            DC
+                        </a>
+
+                        <a
+                            href="#"
+                            target="_blank"
+                        >
+                            IG
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+     作品集
+======================================== -->
+<section class="projects-section" id="projects">
+
+    <div class="projects-container">
+
+        <!-- ===== 區塊標題 ===== -->
+        <div class="projects-header">
+
+            <p class="section-label">
+                SELECTED WORKS
+            </p>
+
+            <h2>
+                作品集
+            </h2>
+
+            <p class="projects-description">
+                這裡整理了一些我實際製作過的 Excel 報表與自動化工具。
+            </p>
+
+        </div>
+
+
+
+        <!-- ========================================
+             作品 01：給養報表自動化
+        ========================================= -->
+        <article class="project-item">
+
+            <div class="project-preview">
+
+                <div class="project-placeholder">
+                    <span>給養報表自動化</span>
+                    <small>Preview</small>
+                </div>
+
+            </div>
+
+
+            <div class="project-content">
+
+                <p class="project-number">
+                    01
+                </p>
+
+                <h3>
+                    給養報表自動化
+                </h3>
+
+                <p class="project-summary">
+                    將原本分散於 Excel、Word 與紙本中的菜單、食材、進貨及報表流程重新整理，建立可自動產生菜單與作業資料、並連動更新報表的 Excel 流程。
+                </p>
+
+
+                <div class="project-tags">
+
+                    <span>Excel</span>
+                    <span>VBA</span>
+                    <span>報表自動化</span>
+                    <span>流程整理</span>
+
+                </div>
+
+
+                <a
+                    class="project-link"
+                    href="projects/food-report.html"
+                >
+                    深入了解
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- ========================================
+             作品 02：郵票收發統計
+        ========================================= -->
+        <article class="project-item project-reverse">
+
+            <div class="project-preview">
+
+                <div class="project-placeholder">
+                    <span>郵票收發統計</span>
+                    <small>Preview</small>
+                </div>
+
+            </div>
+
+
+            <div class="project-content">
+
+                <p class="project-number">
+                    02
+                </p>
+
+                <h3>
+                    郵票收發統計自動化
+                </h3>
+
+                <p class="project-summary">
+                    將原本分散於 Excel 與 Word 的郵寄資料集中管理，透過 VBA 自動產生郵票收支明細、掛號二聯單與郵票餘數統計，並加入資料與庫存檢查。
+                </p>
+
+
+                <div class="project-tags">
+
+                    <span>Excel</span>
+                    <span>VBA</span>
+                    <span>資料統計</span>
+
+                </div>
+
+
+                <a
+                    class="project-link"
+                    href="projects/postage-report.html"
+                >
+                    深入了解
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- ========================================
+             作品 03：調班／代班金額計算
+        ========================================= -->
+        <article class="project-item">
+
+            <div class="project-preview">
+
+                <div class="project-placeholder">
+                    <span>調班／代班金額計算</span>
+                    <small>Preview</small>
+                </div>
+
+            </div>
+
+
+            <div class="project-content">
+
+                <p class="project-number">
+                    03
+                </p>
+
+                <h3>
+                    調班／代班金額計算
+                </h3>
+
+                <p class="project-summary">
+                    依照每月調班與代班紀錄，
+                    自動整理人員代班次數及應計金額，
+                    並輸出指定格式的結果。
+                </p>
+
+
+                <div class="project-tags">
+
+                    <span>Excel</span>
+                    <span>VBA</span>
+                    <span>自動計算</span>
+
+                </div>
+
+
+                <a
+                    class="project-link"
+                    href="projects/substitute-report.html"
+                >
+                    深入了解
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+    </main>
+
+
+
+    <!-- JavaScript -->
+    <script src="main.js"></script>
+
+</body>
+
+</html>
