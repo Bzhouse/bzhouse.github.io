@@ -397,3 +397,55 @@ resetThemeButton.addEventListener(
 // 網頁一開啟就套用之前的設定
 
 applyTheme();
+
+
+// ========================================
+// 複製 Email
+// ========================================
+
+const copyEmailButton = document.getElementById("copyEmail");
+
+if (copyEmailButton) {
+
+    copyEmailButton.addEventListener("click", async (event) => {
+
+        event.preventDefault();
+
+        const email = copyEmailButton.dataset.email;
+
+        try {
+
+            await navigator.clipboard.writeText(email);
+
+            copyEmailButton.textContent = "已複製";
+
+            setTimeout(() => {
+                copyEmailButton.textContent = "Email";
+            }, 1500);
+
+        } catch (error) {
+
+            const tempInput = document.createElement("textarea");
+
+            tempInput.value = email;
+            tempInput.style.position = "fixed";
+            tempInput.style.opacity = "0";
+
+            document.body.appendChild(tempInput);
+
+            tempInput.select();
+            document.execCommand("copy");
+
+            document.body.removeChild(tempInput);
+
+            copyEmailButton.textContent = "已複製";
+
+            setTimeout(() => {
+                copyEmailButton.textContent = "Email";
+            }, 1500);
+
+        }
+
+    });
+
+}
