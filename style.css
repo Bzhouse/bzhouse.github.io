@@ -2394,8 +2394,8 @@ body.menu-open {
     display: grid;
 
     grid-template-columns:
-        0.8fr
-        1.2fr;
+        1fr
+        1fr;
 
     gap: 55px;
 
@@ -2572,8 +2572,8 @@ body.menu-open {
     display: grid;
 
     grid-template-columns:
-        0.7fr
-        1.3fr;
+        1fr
+        1fr;
 
     gap: 55px;
 
