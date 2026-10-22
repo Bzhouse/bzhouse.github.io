@@ -3554,3 +3554,128 @@ body.menu-open {
     }
 
 }
+
+
+/* ========================================
+   郵票作品：大型截圖縮小
+======================================== */
+
+@media (min-width: 769px) {
+
+    .case-figure.postage-figure-compact {
+        width: 80%;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+}
+
+
+/* ========================================
+   關於我：暱稱與本名
+======================================== */
+
+.about-name {
+    display: flex;
+
+    align-items: baseline;
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-bottom: 16px;
+}
+
+
+.about-name-nickname {
+    font-size: 26px;
+    font-weight: 700;
+
+    color:
+        #ecd8fa;
+}
+
+
+.about-name-real {
+    font-size: 14px;
+
+    letter-spacing: 1px;
+
+    color:
+        var(--text-main);
+
+    opacity: 0.72;
+}
+
+
+/* 縮短關於我標題與姓名之間的距離 */
+
+.about-profile .about-intro h2 {
+    margin-bottom: 14px;
+}
+
+
+/* ========================================
+   找到我：介紹文字
+======================================== */
+
+.contact-intro {
+    margin:
+        0 auto 24px;
+
+    line-height: 1.8;
+    font-size: 15px;
+
+    color:
+        var(--text-main);
+
+    opacity: 0.8;
+}
+
+
+/* ========================================
+   找到我：圖示與按鈕排列
+======================================== */
+
+.contact-links a {
+    box-sizing: border-box;
+
+    display: inline-flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 9px;
+
+    min-width: 125px;
+
+    padding:
+        11px 16px;
+}
+
+
+.contact-links a .bi {
+    font-size: 19px;
+    line-height: 1;
+}
+
+
+/* ========================================
+   找到我：聯絡備註
+======================================== */
+
+.contact-note {
+    max-width: 580px;
+
+    margin:
+        22px auto 0;
+
+    line-height: 1.85;
+    font-size: 13px;
+
+    color:
+        var(--text-main);
+
+    opacity: 0.62;
+}
