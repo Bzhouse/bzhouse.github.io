@@ -1021,39 +1021,71 @@ body {
 
 
 
+
 /* ========================================
-   作品標籤
+   作品集：功能標籤
 ======================================== */
 
 .project-tags {
-    display: flex;
+    display: grid;
 
-    flex-wrap: wrap;
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
 
-    gap: 9px;
+    gap: 6px;
 
     margin-bottom: 30px;
 }
 
 
 .project-tags span {
-    padding:
-        6px
-        11px;
+    box-sizing: border-box;
+
+    min-width: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 6px 5px;
 
     border-radius: 999px;
 
     font-size: 12px;
+    font-weight: 600;
 
-    color:
-        #dba7ff;
+    line-height: 1.5;
+    white-space: nowrap;
+
+    color: #f8f1ff;
 
     background:
-        rgba(176, 87, 235, 0.08);
+        rgba(176, 87, 235, 0.16);
 
     border:
-        1px solid rgba(205, 140, 255, 0.17);
+        1px solid rgba(220, 164, 255, 0.32);
 }
+
+
+/* ========================================
+   作品標籤：較窄螢幕
+======================================== */
+
+@media (max-width: 1199px) {
+
+    .project-tags {
+        display: flex;
+
+        flex-wrap: wrap;
+    }
+
+    .project-tags span {
+        padding: 6px 8px;
+    }
+
+}
+
+
 
 
 
@@ -3712,4 +3744,130 @@ body.menu-open {
 
 .skills-card .skills-intro {
     opacity: 0.9;
+}
+
+
+
+/* ========================================
+   WHAT I DO：三欄服務卡片
+======================================== */
+
+.skills-card {
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    column-gap: 22px;
+    row-gap: 18px;
+
+    align-items: stretch;
+}
+
+
+/* ========================================
+   服務卡片：維持三欄，增加垂直空間
+======================================== */
+
+.skills-card > .skill-detail {
+    grid-column: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+
+    padding: 28px 22px;
+}
+
+
+.skills-card .skill-heading {
+    margin-bottom: 14px;
+}
+
+
+/* ========================================
+   可協助的工作：小標題
+======================================== */
+
+
+.skill-examples-title {
+    margin-top: 20px;
+    margin-bottom: 12px;
+
+    padding-top: 0;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    color: #d6abf2;
+}
+
+
+
+/* ========================================
+   可協助的工作：垂直排列小標籤
+======================================== */
+
+.skill-examples {
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin: 24px 0 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+
+.skill-examples li {
+    box-sizing: border-box;
+
+    width: fit-content;
+    max-width: 100%;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(164, 90, 216, 0.09);
+
+    border:
+        1px solid rgba(210, 164, 255, 0.16);
+
+    color: var(--text-main);
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* ========================================
+   平板與手機版
+======================================== */
+
+@media (max-width: 1000px) {
+
+    .skills-card {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .skills-card > .skill-detail {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+@media (max-width: 750px) {
+
+    .skills-card > .skill-detail {
+        padding: 24px 20px;
+    }
+
 }
