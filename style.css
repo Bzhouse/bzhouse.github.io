@@ -3679,3 +3679,37 @@ body.menu-open {
 
     opacity: 0.62;
 }
+
+
+/* ========================================
+   WHAT I DO：提高文字清晰度
+======================================== */
+
+/* 我能幫你做什麼：主標題 */
+
+.skills-card > h2 {
+    color: #f5e8ff;
+}
+
+
+/* 三張服務卡片的標題 */
+
+.skills-card .skill-heading h3 {
+    color: #f7edff;
+
+    font-weight: 700;
+}
+
+
+/* 服務卡片的說明文字 */
+
+.skills-card .skill-detail p {
+    opacity: 0.88;
+}
+
+
+/* 上方整體服務介紹 */
+
+.skills-card .skills-intro {
+    opacity: 0.9;
+}
