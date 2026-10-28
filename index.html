@@ -254,337 +254,401 @@
     <main>
 
 
-        <!-- ========================================
-             Hero
-        ========================================= -->
-        <section
-            class="hero"
-            id="home"
-        >
 
-            <div class="hero-content">
+<!-- ========================================
+     新版首頁：關於我 + 服務 + 找到我
+     取代舊 Hero、About、Skills、Contact
+     不要刪除原本作品集
+======================================== -->
 
-                <p class="hello">
-                    我是 Bz
-                </p>
+<section class="home-overview" id="home">
 
-                <h1>
-                    透過 Excel 與自動化工具 簡化日常資料處理流程
-                    <br>
+    <!-- 內建線條 icon，不需要額外下載圖片 -->
+    <svg class="overview-svg-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 
-                    <span>
-                        讓資料自動整理並產生報表
-                    </span>
-                </h1>
+        <symbol id="bz-file-text" viewBox="0 0 24 24">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <path d="M14 2v6h6M8 13h8M8 17h8"/>
+        </symbol>
 
+        <symbol id="bz-spreadsheet" viewBox="0 0 24 24">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <path d="M14 2v6h6M7.5 12.5h9M7.5 16.5h9M12 12.5v7"/>
+        </symbol>
+
+        <symbol id="bz-clipboard" viewBox="0 0 24 24">
+            <rect x="4" y="4" width="16" height="18" rx="2"/>
+            <rect x="9" y="2" width="6" height="4" rx="1"/>
+            <path d="M8 11h8M8 15h6"/>
+        </symbol>
+
+        <symbol id="bz-files" viewBox="0 0 24 24">
+            <path d="M16 4h2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-2"/>
+            <rect x="4" y="2" width="12" height="18" rx="2"/>
+            <path d="M8 7h4M8 11h4"/>
+        </symbol>
+
+        <symbol id="bz-chart" viewBox="0 0 24 24">
+            <path d="M3 3v18h18"/>
+            <rect x="7" y="12" width="3" height="6"/>
+            <rect x="12" y="8" width="3" height="10"/>
+            <rect x="17" y="5" width="3" height="13"/>
+        </symbol>
+
+        <symbol id="bz-calendar" viewBox="0 0 24 24">
+            <rect x="3" y="5" width="18" height="16" rx="2"/>
+            <path d="M7 3v4M17 3v4M3 10h18M8 14h2M14 14h2M8 18h2"/>
+        </symbol>
+
+        <symbol id="bz-edit" viewBox="0 0 24 24">
+            <path d="M12 20H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6"/>
+            <path d="m14 17 5.5-5.5a2.12 2.12 0 0 1 3 3L17 20l-4 1z"/>
+            <path d="M7 8h8M7 12h6"/>
+        </symbol>
+
+        <symbol id="bz-triangle" viewBox="0 0 24 24">
+            <path d="m10.3 3.9-8.1 14A2 2 0 0 0 3.9 21h16.2a2 2 0 0 0 1.7-3.1l-8.1-14a2 2 0 0 0-3.4 0z"/>
+            <path d="M12 9v4M12 17h.01"/>
+        </symbol>
+
+        <symbol id="bz-code" viewBox="0 0 24 24">
+            <path d="m8 17-5-5 5-5M16 7l5 5-5 5M14 4l-4 16"/>
+        </symbol>
+
+        <symbol id="bz-sparkles" viewBox="0 0 24 24">
+            <path d="m12 3 1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7z"/>
+            <path d="m19 16 .7 2.3L22 19l-2.3.7L19 22l-.7-2.3L16 19l2.3-.7z"/>
+        </symbol>
+
+        <symbol id="bz-check" viewBox="0 0 24 24">
+            <rect x="4" y="3" width="16" height="18" rx="2"/>
+            <path d="m8 12 3 3 5-6"/>
+        </symbol>
+
+        <symbol id="bz-envelope" viewBox="0 0 24 24">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="m2 6 10 7 10-7"/>
+        </symbol>
+
+        <symbol id="bz-message" viewBox="0 0 24 24">
+            <path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z"/>
+            <path d="M8 11.5h8"/>
+        </symbol>
+
+        <symbol id="bz-gamepad" viewBox="0 0 24 24">
+            <path d="M6.3 7h11.4a3 3 0 0 1 2.9 2.2l1.1 7a2.7 2.7 0 0 1-4.4 2.5L14.5 16h-5l-2.8 2.7a2.7 2.7 0 0 1-4.4-2.5l1.1-7A3 3 0 0 1 6.3 7z"/>
+            <path d="M7 10v5M4.5 12.5h5M16.5 11h.01M19 13h.01"/>
+        </symbol>
+
+    </svg>
+
+
+    <div class="home-overview-container">
+
+        <!-- ============================
+             左上：關於我
+        ============================ -->
+
+        <article class="overview-panel overview-about" id="about">
+
+            <div class="overview-kicker">ABOUT ME</div>
+            <h2>關於我</h2>
+
+            <div class="overview-identity">
+
+
+                <div class="overview-photo">
+                    <img src="images/profile.jpg" alt="Bz 個人照片">
+                </div>
+
+
+
+                <div class="overview-identity-text">
+                    <strong>Bz</strong>
+                    <span>黃柏融</span>
+                </div>
+
+
+            </div>
+
+            <p class="overview-slogan">
+                透過 Excel 與自動化工具
+                簡化日常資料處理流程
+            </p>
+
+            <p class="overview-bio">
+                曾在實際工作中完成多項 Excel 自動化工具。
+                這裡整理了其中幾項實作作品。
+            </p>
+
+        </article>
+
+
+        <!-- ============================
+             右側：What I Do
+        ============================ -->
+
+        <section class="overview-panel overview-services" id="skills">
+
+            <div class="overview-kicker">WHAT I DO</div>
+            <h2>我能幫你做什麼</h2>
+
+            <div class="overview-service-grid">
+
+                <!-- 01 資料整合與自動統計 -->
+
+                <article class="overview-service-card">
+
+                    <h3>資料整合與自動統計</h3>
+
+                    <p class="overview-service-desc">
+                        將分散在不同表格的資料整合、自動統計，
+                        減少人工查找與反覆複製貼上的時間。
+                    </p>
+
+                    <ul class="overview-task-list">
+
+                        <li class="overview-task">
+                            <span class="overview-flow">
+                                <svg class="overview-icon" aria-hidden="true">
+                                    <use href="#bz-file-text"></use>
+                                </svg>
+                                <span class="overview-arrow">→</span>
+                                <svg class="overview-icon" aria-hidden="true">
+                                    <use href="#bz-spreadsheet"></use>
+                                </svg>
+                            </span>
+                            <span>Word 表格資料整理至 Excel</span>
+                        </li>
+
+                        <li class="overview-task">
+                            <span class="overview-flow">
+                                <svg class="overview-icon" aria-hidden="true">
+                                    <use href="#bz-clipboard"></use>
+                                </svg>
+                                <span class="overview-arrow">→</span>
+                                <svg class="overview-icon" aria-hidden="true">
+                                    <use href="#bz-spreadsheet"></use>
+                                </svg>
+                            </span>
+                            <span>紙本紀錄改用 Excel 表單管理</span>
+                        </li>
+
+                        <li class="overview-task">
+                            <span class="overview-flow">
+                                <svg class="overview-icon" aria-hidden="true">
+                                    <use href="#bz-files"></use>
+                                </svg>
+                                <span class="overview-arrow">→</span>
+                                <svg class="overview-icon" aria-hidden="true">
+                                    <use href="#bz-chart"></use>
+                                </svg>
+                            </span>
+                            <span>多份 Excel 資料彙整與統計</span>
+                        </li>
+
+                    </ul>
+
+                </article>
+
+
+                <!-- 02 報表自動產生 -->
+
+                <article class="overview-service-card">
+
+                    <h3>報表自動產生</h3>
+
+                    <p class="overview-service-desc">
+                        利用已經輸入的資料，自動產生日報表、
+                        月報表及固定格式的表單，不必每次重新製作。
+                    </p>
+
+                    <ul class="overview-task-list">
+
+                        <li class="overview-task">
+                            <span class="overview-flow">
+                                <svg class="overview-icon" aria-hidden="true">
+                                    <use href="#bz-calendar"></use>
+                                </svg>
+                                <span class="overview-arrow">→</span>
+                                <svg class="overview-icon" aria-hidden="true">
+                                    <use href="#bz-file-text"></use>
+                                </svg>
+                            </span>
+                            <span>日報、週報與月報自動產生</span>
+                        </li>
+
+                        <li class="overview-task">
+                            <span class="overview-flow overview-flow-single">
+                                <svg class="overview-icon" aria-hidden="true">
+                                    <use href="#bz-edit"></use>
+                                </svg>
+                            </span>
+                            <span>依需求設計或調整表單格式</span>
+                        </li>
+
+                    </ul>
+
+                </article>
+
+
+                <!-- 03 表格資料自動帶入 -->
+
+                <article class="overview-service-card">
+
+                    <h3>表格資料自動帶入</h3>
+
+                    <p class="overview-service-desc">
+                        讓同一份資料自動帶入其他表格或後續作業，
+                        減少重複輸入，並在資料異常時提供提醒。
+                    </p>
+
+                    <ul class="overview-task-list">
+
+                        <li class="overview-task">
+                            <span class="overview-flow">
+                                <svg class="overview-icon" aria-hidden="true">
+                                    <use href="#bz-spreadsheet"></use>
+                                </svg>
+                                <span class="overview-arrow">→</span>
+                                <svg class="overview-icon" aria-hidden="true">
+                                    <use href="#bz-files"></use>
+                                </svg>
+                            </span>
+                            <span>相同資料自動填入其他表格</span>
+                        </li>
+
+                        <li class="overview-task">
+                            <span class="overview-flow overview-flow-single">
+                                <svg class="overview-icon" aria-hidden="true">
+                                    <use href="#bz-triangle"></use>
+                                </svg>
+                            </span>
+                            <span>資料缺漏與異常提醒</span>
+                        </li>
+
+                    </ul>
+
+                </article>
+
+
+                <!-- 04 使用工具與開發方式 -->
+
+                <article class="overview-service-card overview-service-tools">
+
+                    <h3>使用工具與開發方式</h3>
+
+                    <ul class="overview-task-list">
+
+
+                        <li class="overview-task">
+                            <span class="overview-flow">
+                                <svg class="overview-icon" aria-hidden="true">
+                                    <use href="#bz-spreadsheet"></use>
+                                </svg>
+                                <span class="overview-vba-icon" aria-hidden="true">VBA</span>
+                            </span>
+                            <span>主要使用 Excel 與 VBA</span>
+                        </li>
+
+
+                        <li class="overview-task">
+                            <span class="overview-flow overview-flow-single">
+                                <svg class="overview-icon" aria-hidden="true">
+                                    <use href="#bz-sparkles"></use>
+                                </svg>
+                            </span>
+                            <span>AI 輔助程式撰寫、查詢與除錯</span>
+                        </li>
+
+                        <li class="overview-task">
+                            <span class="overview-flow overview-flow-single">
+                                <svg class="overview-icon" aria-hidden="true">
+                                    <use href="#bz-check"></use>
+                                </svg>
+                            </span>
+                            <span>需求理解、功能測試與調整由我負責</span>
+                        </li>
+
+                    </ul>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================
+             左下：找到我
+        ============================ -->
+
+        <section class="overview-panel overview-contact" id="contact">
+
+            <div class="overview-kicker">CONTACT</div>
+            <h2>找到我</h2>
+
+            <div class="overview-contact-links">
 
                 <a
-                    href="#projects"
-                    class="hero-button"
+                    href="#"
+                    id="copyEmail"
+                    data-email="k2875633@gmail.com"
+                    class="overview-contact-link"
                 >
-                    查看作品
+                    <svg class="overview-icon" aria-hidden="true">
+                        <use href="#bz-envelope"></use>
+                    </svg>
+                    <span>Email</span>
+                </a>
+
+                <!-- 這裡必須換回你原本的 LINE 連結 -->
+                <a
+                    href="https://line.me/ti/p/h4XbMibrFY"
+                    class="overview-contact-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <i class="bi bi-line" aria-hidden="true"></i>
+                    <span>LINE</span>
+                </a>
+
+                <a
+                    href="https://discord.com/users/287235722673651712"
+                    class="overview-contact-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <i class="bi bi-discord" aria-hidden="true"></i>
+                    <span>Discord</span>
+                </a>
+
+                <a
+                    href="https://www.twitch.tv/bzgamehouse"
+                    class="overview-contact-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <i class="bi bi-twitch" aria-hidden="true"></i>
+                    <span>Twitch</span>
                 </a>
 
             </div>
 
+            <p class="overview-contact-note">
+                聯絡時請先簡單說明需求與來意，
+                方便我了解並回覆。
+                使用 LINE 請於加入好友後主動傳送訊息；
+                若 Discord 無法直接私訊，
+                請先透過 Email 聯繫。
+            </p>
+
         </section>
 
+    </div>
 
+</section>
 
-        <!-- ========================================
-             關於我
-        ========================================= -->
-        <section
-            class="about-section"
-            id="about"
-        >
-
-            <div class="about-container">
-
-
-                <!-- ========================================
-                     左側：關於我
-                ========================================= -->
-                <div class="about-profile">
-
-
-                    <!-- 之後換成照片 / Logo -->
-
-                    <div class="about-photo">
-
-                        <img
-                            src="images/profile.jpg"
-                            alt="Bz 的個人照片"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-
-
-                    <div class="about-intro">
-
-                        <p class="section-label">
-                            ABOUT ME
-                        </p>
-
-                        <h2>
-                            關於我
-                        </h2>
-
-                        <div class="about-name">
-
-                            <span class="about-name-nickname">
-                                Bz
-                            </span>
-
-                            <span class="about-name-real">
-                                黃柏融
-                            </span>
-
-                        </div>
-
-                        <p>
-                            曾在實際工作中完成多項 Excel 自動化工具。
-                        </p>
-
-                        <p>
-                            這裡整理了我的其中幾項實作作品。
-                        </p>
-
-                    </div>
-
-
-                </div>
-
-
-
-                <!-- ========================================
-                     右側：工具與技能
-                ========================================= -->
-                
-                <div class="skills-card">
-
-                    <p class="section-label">
-                        WHAT I DO
-                    </p>
-
-                    <h2>
-                        我能幫你做什麼
-                    </h2>
-
-                    <p class="skills-intro">
-                        如果你的工作還在使用紙本表單，
-                        或經常需要在不同表格之間複製貼上、
-                        重複輸入相同資料、定期製作固定格式的報表，
-                        我可以協助將紙本作業整理成 Excel，
-                        並把後續重複的資料處理工作自動化，
-                        減少人工操作與出錯機會，讓工作變得更簡單。
-                    </p>
-
-
-
-                    <!-- 資料整合與自動統計 -->
-                    <div class="skill-detail">
-
-                        <div class="skill-heading">
-
-                            <h3>
-                                資料整合與自動統計
-                            </h3>
-
-                        </div>
-
-                        <p>
-                            將分散在不同表格的資料整合、自動統計，
-                            減少人工查找與反覆複製貼上的時間。
-                        </p>
-
-                        <ul class="skill-examples">
-
-                            <li>
-                                Word 表格資料整理至 Excel
-                            </li>
-
-                            <li>
-                                紙本紀錄改用 Excel 表單管理
-                            </li>
-
-                            <li>
-                                多份 Excel 資料彙整與統計
-                            </li>
-
-                        </ul>
-
-                    </div>
-
-
-                    <!-- 報表自動產生 -->
-                    <div class="skill-detail">
-
-                        <div class="skill-heading">
-
-                            <h3>
-                                報表自動產生
-                            </h3>
-
-                        </div>
-
-                        <p>
-                            利用已經輸入的資料，自動產生日報表、
-                            月報表及固定格式的表單，
-                            不必每次重新製作。
-                        </p>
-
-
-
-                        <ul class="skill-examples">
-
-                            <li>
-                                日報、週報與月報自動產生
-                            </li>
-
-                            <li>
-                                依照需求格式產生表單
-                            </li>
-
-                        </ul>
-
-                    </div>
-
-
-                    <!-- 表格資料自動帶入 -->
-                    <div class="skill-detail">
-
-                        <div class="skill-heading">
-
-                            <h3>
-                                表格資料自動帶入
-                            </h3>
-
-                        </div>
-
-                        <p>
-                            讓同一份資料自動帶入其他表格或後續作業，
-                            減少重複輸入，並在資料異常時提供提醒。
-                        </p>
-                        
-
-                        <ul class="skill-examples">
-
-                            <li>
-                                相同資料自動填入其他表格
-                            </li>
-
-                            <li>
-                                資料缺漏與異常提醒
-                            </li>
-
-                        </ul>
-
-                    </div>
-
-
-
-
-                    <!-- 使用工具與開發方式 -->
-                    <div class="ai-note">
-
-                        <div class="ai-note-title">
-                            使用工具與開發方式
-                        </div>
-
-                        <p>
-                            目前主要使用 Excel 與 VBA 製作自動化工具，
-                            並搭配 AI 協助程式撰寫、技術查詢與除錯。
-                            需求理解、流程設計、功能測試與實際使用調整由我負責。
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-
-
-                <!-- ========================================
-                     下方：找到我
-                ========================================= -->
-                <div class="contact-card">
-
-                    <p class="section-label">
-                        LINKS
-                    </p>
-
-                    <h2>
-                        找到我
-                    </h2>
-
-                    
-                    <p class="contact-intro">
-                        有 Excel 報表整理或工作流程自動化的需求，
-                        歡迎透過以下方式聯絡。
-                    </p>
-
-
-
-                    <div class="contact-links">
-
-                        <a
-                            href="#"
-                            id="copyEmail"
-                            data-email="k2875633@gmail.com"
-                        >
-                            <i class="bi bi-envelope-fill" aria-hidden="true"></i>
-                            <span>Email</span>
-                        </a>
-
-                        <a
-                            href="https://discord.com/users/287235722673651712"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <i class="bi bi-discord" aria-hidden="true"></i>
-                            <span>Discord</span>
-                        </a>
-
-                        <a
-                            href="https://www.twitch.tv/bzgamehouse"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <i class="bi bi-twitch" aria-hidden="true"></i>
-                            <span>Twitch</span>
-                        </a>
-
-                        
-                        <a
-                            href="https://line.me/ti/p/h4XbMibrFY"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <i class="bi bi-line" aria-hidden="true"></i>
-                            <span>LINE</span>
-                        </a>
-
-
-                    </div>
-                    
-                    <p class="contact-note">
-                        聯絡時請先簡單說明需求與來意，
-                        方便我了解並回覆。
-                        使用 LINE 請於加入好友後主動傳送訊息；
-                        若 Discord 無法直接私訊，
-                        請先透過 Email 聯繫。
-                    </p>
-
-
-
-                </div>
-
-            </div>
-
-        </section>
 
 
 
@@ -621,10 +685,15 @@
 
             <div class="project-preview">
 
-                <div class="project-placeholder">
-                    <span>餐點與食材報表自動化</span>
-                    <small>Preview</small>
+
+                <div class="project-placeholder project-placeholder--image">
+                    <img
+                        src="images/food-report-preview.png"
+                        alt="餐點與食材報表自動化流程預覽"
+                        loading="lazy"
+                    >
                 </div>
+
 
             </div>
 
@@ -675,10 +744,14 @@
 
             <div class="project-preview">
 
-                <div class="project-placeholder">
-                    <span>郵票收發統計</span>
-                    <small>Preview</small>
+                <div class="project-placeholder project-placeholder--image">
+                    <img
+                        src="images/postage-report-preview.png"
+                        alt="郵票收發統計自動化流程預覽"
+                        loading="lazy"
+                    >
                 </div>
+
 
             </div>
 
@@ -729,10 +802,15 @@
 
             <div class="project-preview">
 
-                <div class="project-placeholder">
-                    <span>調班／代班金額計算</span>
-                    <small>Preview</small>
+
+                <div class="project-placeholder project-placeholder--image">
+                    <img
+                        src="images/substitute-report-preview.png"
+                        alt="調班與代班金額計算自動化流程預覽"
+                        loading="lazy"
+                    >
                 </div>
+
 
             </div>
 
